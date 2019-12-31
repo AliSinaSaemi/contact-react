@@ -1,17 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Header = props => {
-  const { branding } = props;
+const Header = (props) => {
+  const { subject } = props;
   return (
-    <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="#">{ branding }</a>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <a href="/" className="navbar-brand">{ subject }</a>
     </nav>
   )
 }
 
-Header.propTypes = {
-  branding: PropTypes.string.isRequired,
+Header.defaultProps = {
+  subject: 'My app' 
 }
+
+Header.propTypes = {
+  subject: PropTypes.string.isRequired
+}
+
 
 export default Header;

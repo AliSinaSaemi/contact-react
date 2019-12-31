@@ -1,3 +1,23 @@
-.card {
-  margin-top: 30px;
+nav {
+  margin-bottom: 30px;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+}
+
+.card {
+  margin-top: 25px;
+  .card-body {
+    border-top: 1px solid rgba(0,0,0,.125);
+  }
+  .card-title {
+    padding: 10px;
+    margin-bottom: 0;
+  }
+}
+
