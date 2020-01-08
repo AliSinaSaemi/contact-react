@@ -1,5 +1,5 @@
 import React from "react";
-class ActiveLink extends React.Component {
+class Page extends React.Component {
 
   componentDidMount() {
     document.title = this.props.title;
@@ -13,4 +13,4 @@ class ActiveLink extends React.Component {
   }
 }
 
-export default ActiveLink;
+export default Page;

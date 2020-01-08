@@ -21,7 +21,7 @@ class Contact extends Component {
           return (
             <React.Fragment>
               <div className="card">
-                <h5 className="card-title">{ name } 
+                <h5 className="card-title">{ name }  
                 <i onClick={() => {this.setState({showContactInfo: !this.state.showContactInfo})}} className="fas fa-caret-down" style={{ cursor: 'pointer' }}></i>
                 <i onClick={this.handleDelete.bind(this, id, dispatch)} className="fa fa-times" style={{ cursor: 'pointer', float: 'right', color: 'red' }}></i></h5>
                 { showContactInfo ? (

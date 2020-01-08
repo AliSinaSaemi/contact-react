@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import Page from './components/Active_link';
 import Contacts from './components/contacts/contacts';
 import Header from './components/layout/header';
 import AddContact from './components/contacts/addContact';
@@ -16,9 +17,27 @@ class App extends Component {
           <div className="app">
             <Header subject="Header" />
             <div className="container">
-              <Route exact path="/" component={Contacts} />
-              <Route exact path="/about" component={About} />
-              <Route exact path="/contact/add" component={AddContact} />
+              <Route
+                  exact
+                  path="/"
+                  render={props => (
+                    <Page {...props} component={Contacts} title="Contacts" />
+                )}
+              />
+              <Route
+                  exact
+                  path="/about"
+                  render={props => (
+                    <Page {...props} component={About} title="Ab" />
+                )}
+              />
+              <Route
+                  exact
+                  path="/contact/add"
+                  render={props => (
+                    <Page {...props} component={AddContact} title="Add to contacts" />
+                )}
+              />
             </div>
           </div>
         </BrowserRouter>
