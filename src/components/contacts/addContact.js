@@ -7,27 +7,49 @@ class AddContact extends Component {
   state = {
     name: '',
     email: '',
-    location: ''
+    location: '',
+    errors: {}
   };
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
   onSubmit = (dispatch, e) => {
     e.preventDefault();
+
     const { name, email, location } = this.state;
+
+    // Check for errors
+    if (name === '') {
+      this.setState({ errors: { name: 'Name is required' } });
+      return;
+    }
+
+    if (email === '') {
+      this.setState({ errors: { email: 'Email is required' } });
+      return;
+    }
+
+    if (location === '') {
+      this.setState({ errors: { location: 'Location is required' } });
+      return;
+    }
+    
+    
     const newContact = {
       id: uuid(),
       name: name,
       email: email,
       location: location
     };
+
     dispatch({type: 'ADD_CONTACT', payload: newContact});
     this.setState({
       name: '',
       email: '',
-      location: ''
+      location: '',
+      errors: {}
     });
   }
   render() {
-    const { name, email, location } = this.state;
+    const { name, email, location, errors } = this.state;
     return (
       <Consumer>
         {value => {
@@ -45,6 +67,7 @@ class AddContact extends Component {
                       placeholder="Enter Name ..."
                       value={name}
                       onChange={this.onChange}
+                      error={errors.name}
                     />
                     <TextInputGroup 
                       label="Email"
@@ -53,6 +76,7 @@ class AddContact extends Component {
                       placeholder="Enter Email ..."
                       value={email}
                       onChange={this.onChange}
+                      error={errors.email}
                     />
                     <TextInputGroup 
                       label="Location"
@@ -61,6 +85,7 @@ class AddContact extends Component {
                       placeholder="Enter Location ..."
                       value={location}
                       onChange={this.onChange}
+                      error={errors.location}
                     />
                     <input 
                       type="submit" 

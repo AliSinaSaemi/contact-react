@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 
 const TextInputGroup = ({
   label,
@@ -6,7 +7,8 @@ const TextInputGroup = ({
   value,
   placeholder, 
   type, 
-  onChange
+  onChange,
+  error
 }) => {
   return (
     <div className="form-group">
@@ -14,12 +16,15 @@ const TextInputGroup = ({
       <input 
         type={type}
         name={name}
-        className="form-control form-control-lg"
+        className={classnames("form-control form-control-lg", {
+          'is-invalid': error
+        })}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
       />
-    </div>
+      {error && <div className="invalid-feedback">{error}</div>}
+    </div>      
   )
 }
 

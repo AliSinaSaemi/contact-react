@@ -6,6 +6,8 @@ class Contacts extends Component {
 
   render() {
     return (
+      <React.Fragment>
+      <h1 className="text-center">Contacts <span className="text-danger">List</span></h1>
       <Consumer>
         {value => {
           const { contacts } = value;
@@ -19,6 +21,7 @@ class Contacts extends Component {
           )
         }}
       </Consumer>
+      </React.Fragment>
     )
   }
 }
